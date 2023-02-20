@@ -1,4 +1,4 @@
-![# Search-in-files](search-in-files.png)<br>
+![Search-engine]<br>
 ![GitHub author](https://img.shields.io/badge/made_by-Blacksite54-009919)
 ![GitHub repo size](https://img.shields.io/github/repo-size/Blacksite54/Search_engine)
 ![GitHub author](https://img.shields.io/badge/made_on-C++-red)
