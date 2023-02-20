@@ -1,121 +1,49 @@
 ![# Search-in-files](search-in-files.png)<br>
-![GitHub author](https://img.shields.io/badge/made_by-OldScripter-009919)
-![GitHub repo size](https://img.shields.io/github/repo-size/OldScripter/Search-in-files)
+![GitHub author](https://img.shields.io/badge/made_by-Blacksite54-009919)
+![GitHub repo size](https://img.shields.io/github/repo-size/Blacksite54/Search_engine)
 ![GitHub author](https://img.shields.io/badge/made_on-C++-red)
 <br><i> Search for words in files</i> | <i> Поиск слов в файлах.</i>
 
 ## Description | Описание
 ![GitHub author](https://img.shields.io/badge/-ENG-blue)<br>
-Application for searching of request words (JSON file requests.json) in resources text files (path to resources files are specified in config.json). Search result is putting into answers.json.<br><br>
+The search engine should be a console application
+(an executable file that runs on any server or computer)
+that performs a search and has the ability to configure through JSON format
+files. The solutions applied in it can later be integrated into a search
+engine running on the web.
+The principles of the search engine should be as follows:
+1. In the configuration file, before launching the application, the names
+of the files that the engine will search for are set.
+2. The search engine must independently crawl all files and
+index them so that you can then find the most
+relevant documents for any search query.
+3. The user sets a request via the requests.json file. A query is
+a set of words for which you need to find documents.
+4. The query is transformed into a list of words.
+5. The index searches for those documents on which all these words occur.
+6. Search results are ranked, sorted and given to the user,
+the maximum number of possible documents in the response is set in
+the configuration file.
+7. At the end, the program generates the answers file.json, which records
+the search results.<br><br>
 ![GitHub author](https://img.shields.io/badge/-RUS-red)<br>
-Приложение для поиска запрашиваемых слов (JSON файл requests.json) в текстовых файлах ресурсов (путь к ресурсам указан в config.json). Результат поиска помещается в answers.json.
-## Technologies
-![GitHub author](https://img.shields.io/badge/C++-14-005199?style=for-the-badge)<br>
-
-![GitHub author](https://img.shields.io/badge/CMake-3.22-005199?style=for-the-badge)<br>
-https://cmake.org/<br>
-
-![GitHub author](https://img.shields.io/badge/JSON-3.10.5-orange?style=for-the-badge)<br>
-https://github.com/nlohmann/json<br>
-
-![GitHub author](https://img.shields.io/badge/GTest-1.11.0-green?style=for-the-badge)<br>
-https://github.com/google/googletest<br>
-
-## Building & Running
-* Step 1: Build the project.<br>
-  * If you use Visual Studio compiler you can build x64 or x32 version respectively:<br>
-    * For x64 version:<br>
-`cmake -A x64 -S . -B "build64"`<br>
-`cmake --build build64 --config Release`<br>
-    * For x32 version:<br>
-`cmake -A Win32 -S . -B "build32"`<br>
-`cmake --build build32 --config Release`<br>
-
-  * In other cases use default build:<br>
-`cmake -S . -B "build"`<br>
-`cmake --build build --config Release`<br>
-
-* Step 2: copy files:<br>
-`.\bin\requests.json`, `.\bin\config.json`, `.\bin\answers.json` and `.\bin\resources` folder<br>
-from `.\bin` folder <br>
-to the `.\bin\Release` folder.<br>
-
-* Step 3: run the application:<br>
-`.\bin\Release\Search_in_files`<br>
-
-## Files specification
-* config.json<br>
-File where specified name and version of application.<br>
-Here you can also change the maximal quantity of relevant pages that will be put into answers.json (max_respones).<br>
-Default content:<br>
-```json
-{
-    "config": 
-    {
-        "name": "FileSearchEngine",
-        "version": "0.1",
-        "max_responses": 5
-    },
-    "files": 
-    [
-        "resources/file001.txt",
-        "resources/file002.txt"
-    ]
-}
-```
-
-* requests.json<br>
-File where specified requests for search.<br>
-Each separate request sholud be entered after ',' on new line. Example below.<br>
-Example content:<br>
-```json
-{
-    "requests":
-    [
-        "tiger fox",
-        "wolf bird",
-        "monkey"
-    ]
-}
-```
-* answers.json<br>
-File where search result will be written in JSON format.<br>
-Example content:<br>
-```json
-{
-  "answers": {
-    "request0": {
-      "relevance": [
-        {
-          "docid": 1,
-          "rank": 1.0
-        },
-        {
-          "docid": 0,
-          "rank": 0.6700000166893005
-        }
-      ],
-      "result": true
-    },
-    "request1": {
-      "relevance": [
-        {
-          "docid": 0,
-          "rank": 1.0
-        },
-        {
-          "docid": 1,
-          "rank": 1.0
-        }
-      ],
-      "result": true
-    },
-    "request2": {
-      "docid": 1,
-      "rank": 1.0,
-      "result": true
-    }
-  }
-}
-```
-<i>NOTE:<br>docid - identificator of a relevant document,<br>rank - relative index,<br>result - true (if relevance is found), or false (if document absolutely not relevant for certain request).</i>
+Поисковый движок должен представлять из себя консольное приложение
+(исполняемый файл, запускаемый на любом сервере или компьютере),
+осуществляющее поиск и имеющее возможность настройки через файлы формата
+JSON. Применённые в нём решения можно впоследствии встроить в поисковый
+движок работающий на веб.
+Принципы работы поискового движка должны быть следующими:
+1. В конфигурационном файле перед запуском приложения задаются названия
+файлов, по которым движок будет осуществлять поиск.
+2. Поисковый движок должен самостоятельно обходить все файлы и
+индексировать их так, чтобы потом по любому поисковому запросу находить наиболее
+релевантные документы.
+3. Пользователь задаёт запрос через JSON-файл requests.json. Запрос — это
+набор слов, по которым нужно найти документы.
+4. Запрос трансформируется в список слов.
+5. В индексе ищутся те документы, на которых встречаются все эти слова.
+6. Результаты поиска ранжируются, сортируются и отдаются пользователю,
+максимальное количество возможных документов в ответе задаётся в
+конфигурационном файле.
+7. В конце программа формирует файл answers.json, в который записывает
+результаты поиска.
